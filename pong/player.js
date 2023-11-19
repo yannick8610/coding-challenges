@@ -14,12 +14,40 @@ function GamePlan(x, y, w, h) {
         stroke(255);
         strokeWeight(1)
         rect(this.x, this.y, this.w, this.h, 10);
-        line(this.w / 2, this.y, this.w / 2, this.h + this.y);      
+        line(this.x + this.w / 2, this.y, this.x + this.w / 2, this.h + this.y);      
+    }
+
+
+    this.touched = function(ball, playerLeft, playerRight) {
+        if (playerLeft.nextBall || playerRight.nextBall) {
+            return false;
+        }
+        if (ball.x - this.x < ball.r) {
+            ball.velocityX = ball.velocityY = 0;
+            playerRight.goal();
+            playerLeft.nextBall = true;
+            playerRight.nextBall = false;           
+            return true;
+        }
+        if (this.x + this.w - ball.x < ball.r) {
+            ball.velocityX = ball.velocityY = 0;
+            playerLeft.goal();
+            playerRight.nextBall = false;
+            playerLeft.nextBall = true;           
+            return true;
+        }
+        if (ball.y - this.y < ball.r) {
+            ball.velocityY *= -1;
+        }
+        if (this.y + this.h - ball.y < ball.r) {
+            ball.velocityY *= -1;
+        }
+        return false;
     }
 }
 
 
-function Player(plan, x,y,isLeft) {
+function Player(plan, x, y, isLeft) {
     const speed = 5;
 
     this.plan = plan;
@@ -29,6 +57,9 @@ function Player(plan, x,y,isLeft) {
     this.h = 60;
     this.isLeft = isLeft;
     this.velocity = 0;
+    this.score = 0;
+    this.nextBall = false;
+
 
     this.show = function() {
         fill(92);
@@ -60,5 +91,43 @@ function Player(plan, x,y,isLeft) {
         this.velocity = 0;
     }
 
+    this.goal = function() {
+        this.score++;
+    }
+
+    this.missedBall = function(ball) {
+        return false;
+    }
+
+    this.touched = function(ball) {
+        if (this.isLeft) {
+            fill(128,0,0);
+            ellipseMode(CENTER);
+            strokeWeight(1)
+            circle(ball.x, ball.r)
+            circle(this.x + this.w / 2, ball.r)
+            ellipseMode(CORNER);
+            if (ball.x - (this.x + this.w / 2) < ball.r) {
+                if (this.y - this.h / 2 >= ball.y && ball.y <= this.y + this.h / 2) {
+                    ball.velocityX *= -1;
+                    return true
+                }
+            }
+        } else {
+            fill(200,0,0);
+            ellipseMode(CENTER);
+            strokeWeight(1)
+            circle(this.x - this.w / 2, ball.r)
+            circle(ball.x, ball.r)
+            ellipseMode(CORNER);
+            if ((this.x - this.w / 2) - ball.x < ball.r) {
+                if (this.y - this.h / 2 >= ball.y && ball.y <= this.y + this.h / 2) {
+                    ball.velocityX *= -1;
+                    return true
+                }
+            }
+        }
+        return false;
+    }
 
 }
