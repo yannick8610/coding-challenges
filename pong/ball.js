@@ -1,6 +1,6 @@
 function Ball(plan, x, y, r) {
 
-    const speedRadius = 2;
+    const speedRadius = 5;
 
     this.plan = plan;
     this.x = x;

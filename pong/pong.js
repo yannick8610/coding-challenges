@@ -29,16 +29,22 @@ function draw() {
   background(0, 0, 0);
 
   plan.show();
+  ball.show();
   playerLeft.show();
   playerRight.show();
-  ball.show();
+
+  if (playerLeft.score >= 10 || playerRight.score >= 10) {
+    textAlign(CENTER);
+    fill(200)
+    text("GAME OVER !!!", w / 2, h / 2);
+    noLoop()
+  }
 
   if (playerLeft.nextBall) {
     playerLeft.nextBall = false;
     ball.reset()
     ball.go(-1, random(PI / 4, 3 * PI / 4))
-  }
-  if (playerRight.nextBall) {
+  } else if (playerRight.nextBall) {
     playerRight.nextBall = false;
     ball.reset()
     ball.go(1, random(PI / 4, 3 * PI / 4))    
@@ -55,6 +61,8 @@ function draw() {
   playerLeft.move();
   playerRight.move();
   ball.move();
+
+
 }
 
 

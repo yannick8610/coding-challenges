@@ -48,7 +48,7 @@ function GamePlan(x, y, w, h) {
 
 
 function Player(plan, x, y, isLeft) {
-    const speed = 5;
+    const speed = 8;
 
     this.plan = plan;
     this.x = x;
@@ -66,6 +66,14 @@ function Player(plan, x, y, isLeft) {
         rectMode(CENTER);
         rect(this.x, this.y, this.w, this.h)
         rectMode(CORNER)
+        textSize(50);
+        if (this.isLeft) {
+            textAlign(CENTER)
+            text(this.score, this.x + 20, 80);
+        } else {
+            textAlign(CENTER)
+            text(this.score, this.x - 20, 80);
+        }
     }
 
     this.move = function() {
@@ -100,28 +108,14 @@ function Player(plan, x, y, isLeft) {
     }
 
     this.touched = function(ball) {
-        if (this.isLeft) {
-            fill(128,0,0);
-            ellipseMode(CENTER);
-            strokeWeight(1)
-            circle(ball.x, ball.r)
-            circle(this.x + this.w / 2, ball.r)
-            ellipseMode(CORNER);
-            if (ball.x - (this.x + this.w / 2) < ball.r) {
-                if (this.y - this.h / 2 >= ball.y && ball.y <= this.y + this.h / 2) {
+        if (ball.y + ball.r >= this.y - this.h / 2 && ball.y - ball.r <= this.y + this.h / 2) {
+            if (this.isLeft) {
+                if (ball.x - ball.r < this.x + this.w / 2) {
                     ball.velocityX *= -1;
                     return true
                 }
-            }
-        } else {
-            fill(200,0,0);
-            ellipseMode(CENTER);
-            strokeWeight(1)
-            circle(this.x - this.w / 2, ball.r)
-            circle(ball.x, ball.r)
-            ellipseMode(CORNER);
-            if ((this.x - this.w / 2) - ball.x < ball.r) {
-                if (this.y - this.h / 2 >= ball.y && ball.y <= this.y + this.h / 2) {
+            } else {
+                if (ball.x + ball.r >= this.x - this.w / 2) {
                     ball.velocityX *= -1;
                     return true
                 }
