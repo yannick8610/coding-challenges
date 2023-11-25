@@ -69,10 +69,10 @@ function Player(plan, x, y, isLeft) {
         textSize(50);
         if (this.isLeft) {
             textAlign(CENTER)
-            text(this.score, this.x + 20, 80);
+            text(this.score, this.x + 40, 80);
         } else {
             textAlign(CENTER)
-            text(this.score, this.x - 20, 80);
+            text(this.score, this.x - 40, 80);
         }
     }
 

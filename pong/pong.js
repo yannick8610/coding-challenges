@@ -34,7 +34,7 @@ function draw() {
   playerLeft.show();
   playerRight.show();
 
-  if (playerLeft.score >= 1 || playerRight.score >= 1) {
+  if (playerLeft.score >= 10 || playerRight.score >= 10) {
     textAlign(CENTER);
     fill(200)
     text("GAME OVER !!!", w / 2, h / 2);
