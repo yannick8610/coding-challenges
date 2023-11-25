@@ -12,7 +12,7 @@ this is my 1st coding project.
 
 # PONG
 
-I have implemented with my Dad (lolo8304)[https://github.com/lolo8304] my first coding challenge from John Cricket - https://codingchallenges.fyi/challenges/challenge-pong/
+I have implemented with my Dad [lolo8304](https://github.com/lolo8304) my first coding challenge from John Cricket - https://codingchallenges.fyi/challenges/challenge-pong/
 
 # Run
 
