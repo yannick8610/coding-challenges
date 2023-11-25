@@ -7,6 +7,7 @@ let playerLeft;
 let playerRight;
 let plan;
 let ball;
+let gameOver = false;
 
 function setup() {
   createCanvas(w, h);
@@ -33,10 +34,11 @@ function draw() {
   playerLeft.show();
   playerRight.show();
 
-  if (playerLeft.score >= 10 || playerRight.score >= 10) {
+  if (playerLeft.score >= 1 || playerRight.score >= 1) {
     textAlign(CENTER);
     fill(200)
     text("GAME OVER !!!", w / 2, h / 2);
+    gameOver = true;
     noLoop()
   }
 
@@ -67,6 +69,10 @@ function draw() {
 
 
 function keyPressed() {
+  if (key === " " && gameOver) {
+    setup();
+    loop();
+  }
   if (key === "w") {
     playerLeft.goUp();
   }
