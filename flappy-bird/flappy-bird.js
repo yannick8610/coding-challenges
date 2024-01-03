@@ -9,6 +9,11 @@ function setup() {
 
 }
 
+function reset() {
+  bird = new Bird();
+  loop();
+}
+
 
 function draw() {
   background('black');
@@ -20,5 +25,16 @@ function draw() {
 function keyPressed() {
   if (key === "w") {
     bird.fly();
+  }
+  if (key === "s") {
+    reset();
+  }
+
+}
+
+
+function keyReleased() {
+  if (key === "w") {
+    bird.gravityOn();
   }
 }
