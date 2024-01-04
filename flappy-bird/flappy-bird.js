@@ -45,8 +45,10 @@ function keyReleased() {
 
 function touchStarted() {
   bird.fly();
+  return false;
 }
 
 function touchEnded(fxn) {
   bird.gravityOn();
+  return false;
 }
