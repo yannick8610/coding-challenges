@@ -1,9 +1,10 @@
 function Bird() {
     const FLY = 20;
 
-    this.x = W * 0.2;
+    this.x = W * 0.15;
     this.y = H / 2;
-    this.r = BIRD_RADIUS;
+    this.h = BIRD_HEIGHT;
+    this.w = BIRD_WIDTH;
     this.velocity = 0.1;
     this.isGameOver = false;
 
@@ -20,27 +21,20 @@ function Bird() {
             return;
         }
         this.y = this.y + this.velocity;
-        if (this.y >= H - this.r) {
-            this.y = H - this.r;
+        if (this.y >= H - this.h) {
+            this.y = H - this.h;
             this.gameOver();
         } else {
             this.velocity = this.velocity + 0.1;
         }
 
-
-        fill(255, 0, 0);
-        /*
-        ellipseMode(CENTER);
-        strokeWeight(0)
-        circle(this.x, this.y, this.r, 255, 0, 0)
-        ellipseMode(CORNER)
-        */
-        image(imgBird, this.x, this.y, this.r * 2, this.r * 2);
+        rect(this.x, this.y, this.w, this.h);
+        image(imgBird, this.x, this.y, this.w, this.h);
     }
 
     this.fly = function () {
         this.y = this.y - FLY;
-        if (this.y < this.r) {
+        if (this.y < this.h) {
             this.gameOver();
         }
         this.velocity = -1;

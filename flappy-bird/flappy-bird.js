@@ -3,7 +3,8 @@ let H = 500;
 const TITLE_SPACE = 150;
 const PIPE_SPACE = 200;
 const PIPE_WIDTH = 50;
-const BIRD_RADIUS = 30;
+const BIRD_WIDTH = 30;
+const BIRD_HEIGHT = 30 * 305 / 420;
 
 let bird;
 let pipes;
@@ -19,7 +20,6 @@ function preload() {
   imgPipeDown = loadImage('images/pipe-down.png');
 }
 
-
 function setup() {
   W = windowWidth;
   H = windowHeight - TITLE_SPACE;
@@ -27,14 +27,15 @@ function setup() {
 
   bird = new Bird();
   pipes = new Pipes();
-
-
 }
 
 function draw() {
   background(imgBackground);
   pipes.draw();
   bird.draw();
+  if (pipes.hits(bird)) {
+    bird.gameOver();
+  }
 }
 
 

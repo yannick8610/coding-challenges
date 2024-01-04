@@ -1,7 +1,7 @@
 function Pipes() {
     this.w = W;
     this.h = H;
-    this.startNo1 = W * 0.2 + 100;
+    this.startNo1 = W * 0.2 + 200;
     this.pipes = [];
 
     // versuche neue Pipes zu erzeugen, abhängig davon ob sie sichtbar sind
@@ -28,6 +28,15 @@ function Pipes() {
         // in der var pipes sind alle Pipe() drin, die sichtbar sind.
     }
 
+    this.hits = function (bird) {
+        for (let i = 0; i < this.pipes.length; i++) {
+            if (this.pipes[i].hits(bird)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     this.draw = function () {
         this.spawn();
         for (let i = 0; i < this.pipes.length; i++) {
@@ -42,18 +51,37 @@ function Pipe(xpos) {
     this.w = PIPE_WIDTH;
     this.h = H
 
-    this.hGap = map(random(), 0.0, 1.0, 3.0, 6) * BIRD_RADIUS; // 3 * R - 5.5 * R
+    this.hGap = map(random(), 0.0, 1.0, 3.0, 6) * BIRD_WIDTH; // 3 * R - 5.5 * R
     this.yTopGap = map(random(), 0.0, 1.0, this.h / 10, this.h / 2);
     this.yBottomGap = this.y + this.yTopGap + this.hGap;
 
     this.velocity = -2.0;
+    this.higtlight = false;
 
+    this.hits = function (bird) {
+        if (bird.y < this.yTopGap || bird.y + bird.h * 2 > this.yBottomGap) {
+            if (bird.x + bird.w > this.x && bird.x < this.x + this.w) {
+                fill('red');
+                if (bird.y < this.yTopGap) {
+                    rect(this.x, this.y, this.w, this.yTopGap);
+                }
+                if (bird.y + bird.h > this.yBottomGap) {
+                    rect(this.x, this.yBottomGap, this.w, this.h - this.yBottomGap);
 
+                }
+                return true;
+            }
+        }
+        return false;
+    }
 
     this.draw = function () {
         noStroke();
 
         fill('pink');
+        rect(this.x, this.y, this.w, this.yTopGap);
+        rect(this.x, this.yBottomGap, this.w, this.h - this.yBottomGap);
+
         image(imgPipeDown, this.x, this.y, this.w, this.yTopGap);
         image(imgPipeUp, this.x, this.yBottomGap, this.w, this.h - this.yBottomGap);
 
