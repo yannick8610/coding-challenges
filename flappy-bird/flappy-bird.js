@@ -1,7 +1,7 @@
 let W = 300;
 let H = 500;
 const TITLE_SPACE = 150;
-const PIPE_SPACE = 200;
+const PIPE_SPACE = 300;
 const PIPE_WIDTH = 50;
 const BIRD_WIDTH = 30;
 const BIRD_HEIGHT = 30 * 305 / 420;

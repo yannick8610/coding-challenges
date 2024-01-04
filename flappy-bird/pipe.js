@@ -61,6 +61,8 @@ function Pipe(xpos) {
     this.hits = function (bird) {
         if (bird.y < this.yTopGap || bird.y + bird.h * 2 > this.yBottomGap) {
             if (bird.x + bird.w > this.x && bird.x < this.x + this.w) {
+
+                /*bounding box debugging 
                 fill('red');
                 if (bird.y < this.yTopGap) {
                     rect(this.x, this.y, this.w, this.yTopGap);
@@ -69,6 +71,12 @@ function Pipe(xpos) {
                     rect(this.x, this.yBottomGap, this.w, this.h - this.yBottomGap);
 
                 }
+                console.group("hit");
+                console.log(bird);
+                console.log(this);
+                console.log("HIT");
+                console.groupEnd();
+                */
                 return true;
             }
         }
@@ -76,15 +84,17 @@ function Pipe(xpos) {
     }
 
     this.draw = function () {
+        this.x = this.x + this.velocity
+
         noStroke();
 
-        fill('pink');
-        rect(this.x, this.y, this.w, this.yTopGap);
-        rect(this.x, this.yBottomGap, this.w, this.h - this.yBottomGap);
+        //fill('pink');
+        //bounding box debugging
+        //rect(this.x, this.y, this.w, this.yTopGap);
+        //rect(this.x, this.yBottomGap, this.w, this.h - this.yBottomGap);
 
         image(imgPipeDown, this.x, this.y, this.w, this.yTopGap);
         image(imgPipeUp, this.x, this.yBottomGap, this.w, this.h - this.yBottomGap);
 
-        this.x = this.x + this.velocity
     }
 }

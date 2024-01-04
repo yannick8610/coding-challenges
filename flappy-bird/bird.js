@@ -10,7 +10,9 @@ function Bird() {
 
     this.gameOver = function () {
         textAlign(CENTER);
-        fill(200)
+        fill(0)
+        textSize(20);
+        textStyle(BOLD);
         text("GAME OVER !!!", W / 2, H / 2);
         this.isGameOver = true;
         noLoop()
@@ -28,7 +30,8 @@ function Bird() {
             this.velocity = this.velocity + 0.1;
         }
 
-        rect(this.x, this.y, this.w, this.h);
+        //bounding box debugging
+        // rect(this.x, this.y, this.w, this.h);
         image(imgBird, this.x, this.y, this.w, this.h);
     }
 
