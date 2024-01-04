@@ -3,7 +3,7 @@ function Bird() {
 
     this.x = W * 0.2;
     this.y = H / 2;
-    this.r = 30;
+    this.r = BIRD_RADIUS;
     this.velocity = 0.1;
     this.isGameOver = false;
 
@@ -22,17 +22,20 @@ function Bird() {
         this.y = this.y + this.velocity;
         if (this.y >= H - this.r) {
             this.y = H - this.r;
-            this.gameOver();
+            //this.gameOver();
         } else {
             this.velocity = this.velocity + 0.1;
         }
 
 
         fill(255, 0, 0);
+        /*
         ellipseMode(CENTER);
         strokeWeight(0)
         circle(this.x, this.y, this.r, 255, 0, 0)
         ellipseMode(CORNER)
+        */
+        image(imgBird, this.x, this.y, this.r * 2, this.r * 2);
     }
 
     this.fly = function () {

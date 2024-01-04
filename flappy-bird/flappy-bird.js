@@ -2,10 +2,23 @@ let W = 300;
 let H = 500;
 const TITLE_SPACE = 150;
 const PIPE_SPACE = 200;
-const PIPE_WIDTH = 30;
+const PIPE_WIDTH = 50;
+const BIRD_RADIUS = 30;
 
 let bird;
 let pipes;
+let imgBackground;
+let imgBird;
+let imgPipeUp;
+let imgPipeDown;
+
+function preload() {
+  imgBackground = loadImage('images/flappy_bird_backdrop.jpg');
+  imgBird = loadImage('images/bird.png');
+  imgPipeUp = loadImage('images/pipe-up.png');
+  imgPipeDown = loadImage('images/pipe-down.png');
+}
+
 
 function setup() {
   W = windowWidth;
@@ -19,7 +32,7 @@ function setup() {
 }
 
 function draw() {
-  background('blue');
+  background(imgBackground);
   pipes.draw();
   bird.draw();
 }

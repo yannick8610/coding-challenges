@@ -43,14 +43,22 @@ function Pipe(xpos) {
     this.y = 0;
     this.w = PIPE_WIDTH;
     this.h = H
-    this.velocity = -0.5;
+
+    this.hGap = map(random(), 0.0, 1.0, 3.0, 6) * BIRD_RADIUS; // 3 * R - 5.5 * R
+    this.yTopGap = map(random(), 0.0, 1.0, this.h / 10, this.h / 2);
+    this.yBottomGap = this.y + this.yTopGap + this.hGap;
+
+    this.velocity = -2.0;
 
 
 
     this.draw = function () {
-        fill('green');
         noStroke();
-        rect(this.x, this.y, this.w, this.h);
+
+        fill('pink');
+        image(imgPipeDown, this.x, this.y, this.w, this.yTopGap);
+        image(imgPipeUp, this.x, this.yBottomGap, this.w, this.h - this.yBottomGap);
+
         this.x = this.x + this.velocity
     }
 }
