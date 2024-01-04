@@ -38,3 +38,11 @@ function keyReleased() {
     bird.gravityOn();
   }
 }
+
+function touchStarted() {
+  bird.fly();
+}
+
+function touchEnded(fxn) {
+  bird.gravityOn();
+}
