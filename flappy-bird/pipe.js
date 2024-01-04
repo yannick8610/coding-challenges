@@ -19,13 +19,11 @@ function Pipes() {
         while (newPipeX < W) {
             this.pipes.push(new Pipe(newPipeX));
             newPipeX = newPipeX + PIPE_SPACE;
-            console.log("Spawn")
         }
 
         let firstPipe = this.pipes[0];
         if (firstPipe.x + firstPipe.w < 0) {
             this.pipes.shift();
-            console.log("Removed")
         }
         // in der var pipes sind alle Pipe() drin, die sichtbar sind.
     }

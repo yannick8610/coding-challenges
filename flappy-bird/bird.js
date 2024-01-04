@@ -22,7 +22,7 @@ function Bird() {
         this.y = this.y + this.velocity;
         if (this.y >= H - this.r) {
             this.y = H - this.r;
-            //this.gameOver();
+            this.gameOver();
         } else {
             this.velocity = this.velocity + 0.1;
         }
