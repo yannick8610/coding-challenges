@@ -19,7 +19,7 @@ function setup() {
 }
 
 function draw() {
-  background('black');
+  background('blue');
   pipes.draw();
   bird.draw();
 }
