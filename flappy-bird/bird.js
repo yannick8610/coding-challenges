@@ -1,8 +1,8 @@
 function Bird() {
     const FLY = 20;
 
-    this.x = w * 0.4;
-    this.y = h / 2;
+    this.x = W * 0.4;
+    this.y = H / 2;
     this.r = 10;
     this.velocity = 0.1;
     this.gravity = true;
@@ -11,7 +11,7 @@ function Bird() {
     this.gameOver = function () {
         textAlign(CENTER);
         fill(200)
-        text("GAME OVER !!!", w / 2, h / 2);
+        text("GAME OVER !!!", W / 2, H / 2);
         this.isGameOver = true;
         noLoop()
     }
@@ -23,8 +23,8 @@ function Bird() {
 
         this.y = this.y + this.velocity;
         if (this.gravity) {
-            if (this.y >= h - this.r) {
-                this.y = h - this.r;
+            if (this.y >= H - this.r) {
+                this.y = H - this.r;
                 this.gameOver();
             } else {
                 this.velocity = this.velocity + 0.1;

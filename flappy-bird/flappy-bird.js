@@ -1,10 +1,14 @@
-const w = 300;
-const h = 500;
+let W = 300;
+let H = 500;
+const TITLE_SPACE = 150;
 
 let bird;
 
 function setup() {
-  createCanvas(w, h);
+  W = windowWidth;
+  H = windowHeight - TITLE_SPACE;
+  createCanvas(W, H);
+
   bird = new Bird();
 
 }
