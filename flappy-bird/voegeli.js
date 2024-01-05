@@ -27,8 +27,6 @@ function Voegeli() {
         //rect(this.x, this.y, this.w, this.h);
         image(imgVoegeli, this.x, this.y, this.w, this.h);
 
-        image(imgVoegeli, this.x + 150, this.y - 10, this.w, this.h);
-        image(imgVoegeli, this.x + 300, this.y + 10, this.w, this.h);
     }
 
 
