@@ -17,6 +17,15 @@ function Bird() {
         this.isGameOver = true;
         noLoop()
     }
+    
+    this.boundingBox = function() {
+        return {
+            x: this.x - 1,
+            y: this.y - 1,
+            w: this.w - 2,
+            h: this.h - 2
+        }
+    }
 
     this.draw = function () {
         if (this.isGameOver) {
