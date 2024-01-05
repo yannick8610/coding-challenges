@@ -60,7 +60,7 @@ function Pipe(xpos) {
 
     this.hits = function (bird) {
         const birdBox = bird.boundingBox();
-        if (birdBox.x + birdBox.w > this.x && bird.x < this.x + this.w) {
+        if (birdBox.x + birdBox.w > this.x && birdBox.x < this.x + this.w) {
             if (birdBox.y < this.yTopGap || birdBox.y + birdBox.h > this.yBottomGap) {
                 /*bounding box debugging */
                 fill('red');
@@ -72,7 +72,7 @@ function Pipe(xpos) {
 
                 }
                 fill('pink')
-                rect(bird.x, bird.y, bird.w, bird.h);
+                rect(birdBox.x, birdBox.y, birdBox.w, birdBox.h);
                 console.group("hit");
                 console.log(bird);
                 console.log(this);
