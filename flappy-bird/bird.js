@@ -19,11 +19,12 @@ function Bird() {
     }
     
     this.boundingBox = function() {
+        const gap = 2;
         return {
-            x: this.x - 1,
-            y: this.y - 1,
-            w: this.w - 2,
-            h: this.h - 2
+            x: this.x - gap,
+            y: this.y - gap,
+            w: this.w - 2*gap,
+            h: this.h - 2*gap
         }
     }
 
