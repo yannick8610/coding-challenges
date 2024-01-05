@@ -71,6 +71,7 @@ function Pipe(xpos) {
                     rect(this.x, this.yBottomGap, this.w, this.h - this.yBottomGap);
 
                 }
+                fill('pink')
                 rect(bird.x, bird.y, bird.w, bird.h);
                 console.group("hit");
                 console.log(bird);
