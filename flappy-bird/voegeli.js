@@ -1,11 +1,11 @@
 function Voegeli() {
 
 
-    this.x = W * 0.15;
+    this.x = 10;
     this.y = H / 5;
     this.h = BIRD_HEIGHT * 3 / 4;
     this.w = BIRD_WIDTH * 3 / 4;
-    this.velocity = 0.3;
+    this.velocity = 1.8;
 
 
 
@@ -16,12 +16,19 @@ function Voegeli() {
         } else {
             this.y = this.y + 1
         }
+        if (this.x > W) {
+            voegeli = new Voegeli()
+            return
+        }
 
 
         //bounding box debugging
         fill('red');
         //rect(this.x, this.y, this.w, this.h);
         image(imgVoegeli, this.x, this.y, this.w, this.h);
+
+        image(imgVoegeli, this.x + 150, this.y - 10, this.w, this.h);
+        image(imgVoegeli, this.x + 300, this.y + 10, this.w, this.h);
     }
 
 
