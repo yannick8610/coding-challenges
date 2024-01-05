@@ -59,9 +59,9 @@ function Pipe(xpos) {
     this.higtlight = false;
 
     this.hits = function (bird) {
-        const birdBox = bird.boundingbox();
-        if (bird.x + bird.w > this.x && bird.x < this.x + this.w) {
-            if (bird.y < this.yTopGap || bird.y + bird.h > this.yBottomGap) {
+        const birdBox = bird.boundingBox();
+        if (birdBox.x + birdBox.w > this.x && bird.x < this.x + this.w) {
+            if (birdBox.y < this.yTopGap || birdBox.y + birdBox.h > this.yBottomGap) {
                 /*bounding box debugging 
                 fill('red');
                 if (bird.y < this.yTopGap) {
