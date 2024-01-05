@@ -62,21 +62,22 @@ function Pipe(xpos) {
         const birdBox = bird.boundingBox();
         if (birdBox.x + birdBox.w > this.x && bird.x < this.x + this.w) {
             if (birdBox.y < this.yTopGap || birdBox.y + birdBox.h > this.yBottomGap) {
-                /*bounding box debugging 
+                /*bounding box debugging */
                 fill('red');
-                if (bird.y < this.yTopGap) {
+                if (birdBox.y < this.yTopGap) {
                     rect(this.x, this.y, this.w, this.yTopGap);
                 }
-                if (bird.y + bird.h > this.yBottomGap) {
+                if (birdBox.y + birdBox.h > this.yBottomGap) {
                     rect(this.x, this.yBottomGap, this.w, this.h - this.yBottomGap);
 
                 }
+                rect(bird.x, bird.y, bird.w, bird.h);
                 console.group("hit");
                 console.log(bird);
                 console.log(this);
                 console.log("HIT");
                 console.groupEnd();
-                */
+                /* */
                 return true;
             }
         }
