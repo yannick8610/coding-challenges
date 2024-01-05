@@ -62,7 +62,7 @@ function Pipe(xpos) {
         const birdBox = bird.boundingBox();
         if (birdBox.x + birdBox.w > this.x && birdBox.x < this.x + this.w) {
             if (birdBox.y < this.yTopGap || birdBox.y + birdBox.h > this.yBottomGap) {
-                /*bounding box debugging */
+                /*bounding box debugging 
                 fill('red');
                 if (birdBox.y < this.yTopGap) {
                     rect(this.x, this.y, this.w, this.yTopGap);
@@ -78,7 +78,7 @@ function Pipe(xpos) {
                 console.log(this);
                 console.log("HIT");
                 console.groupEnd();
-                /* */
+                */
                 return true;
             }
         }
