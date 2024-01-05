@@ -5,7 +5,7 @@ function Bird() {
     this.y = H / 2;
     this.h = BIRD_HEIGHT;
     this.w = BIRD_WIDTH;
-    this.velocity = 0.1;
+    this.velocity = 0.2;
     this.isGameOver = false;
 
     this.gameOver = function () {
