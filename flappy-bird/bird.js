@@ -17,14 +17,14 @@ function Bird() {
         this.isGameOver = true;
         noLoop()
     }
-    
-    this.boundingBox = function() {
+
+    this.boundingBox = function () {
         const gap = 2;
         return {
             x: this.x - gap,
             y: this.y - gap,
-            w: this.w - 2*gap,
-            h: this.h - 2*gap
+            w: this.w - 2 * gap,
+            h: this.h - 2 * gap
         }
     }
 
@@ -55,4 +55,23 @@ function Bird() {
 
 
 
+}
+
+function Scoreboard() {
+    this.score = 0;
+    this.x = W / 2;
+    this.y = 50;
+
+
+    this.plus1 = function () {
+        this.score = this.score + 1;
+    }
+
+    this.draw = function () {
+        fill('black');
+        textSize(50);
+        textAlign(CENTER)
+        text(this.score, this.x, this.y);
+
+    }
 }

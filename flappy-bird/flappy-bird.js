@@ -14,6 +14,7 @@ let imgBackground;
 let imgBird;
 let imgPipeUp;
 let imgPipeDown;
+let scoreboard;
 
 
 function preload() {
@@ -24,6 +25,7 @@ function preload() {
   imgVoegeli = loadImage('images/voegeli.png')
 }
 
+
 function setup() {
   W = windowWidth;
   H = windowHeight - TITLE_SPACE;
@@ -32,6 +34,7 @@ function setup() {
   bird = new Bird();
   pipes = new Pipes();
   voegeli = new Voegeli();
+  scoreboard = new Scoreboard();
 }
 
 function draw() {
@@ -42,6 +45,10 @@ function draw() {
   if (pipes.hits(bird)) {
     bird.gameOver();
   }
+  if (pipes.passed(bird)) {
+    scoreboard.plus1();
+  }
+  scoreboard.draw();
 }
 
 
@@ -55,10 +62,10 @@ function reset() {
 
 
 function keyPressed() {
-  if (key === "w") {
+  if (key?.toLowerCase() === "w") {
     bird.fly();
   }
-  if (key === "s") {
+  if (key?.toLowerCase() === "s") {
     reset();
   }
 

@@ -37,6 +37,16 @@ function Pipes() {
         return false;
     }
 
+    this.passed = function (bird) {
+        for (let i = 0; i < this.pipes.length; i++) {
+            if (this.pipes[i].passed(bird)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
     this.draw = function () {
         this.spawn();
         for (let i = 0; i < this.pipes.length; i++) {
@@ -50,6 +60,7 @@ function Pipe(xpos) {
     this.y = 0;
     this.w = PIPE_WIDTH;
     this.h = H
+    this.isScoreCounted = false;
 
     this.hGap = map(random(), 0.0, 1.0, 3.0, 6) * BIRD_WIDTH; // 3 * R - 5.5 * R
     this.yTopGap = map(random(), 0.0, 1.0, this.h / 10, this.h / 2);
@@ -84,6 +95,20 @@ function Pipe(xpos) {
         }
         return false;
     }
+
+
+    this.passed = function (bird) {
+        if (!this.isScoreCounted) {
+            if (this.x + this.w / 2 < bird.x && bird.x < this.x + this.w) {
+                this.isScoreCounted = true;
+                return true;
+            }
+            return false;
+        }
+    }
+
+
+
 
     this.draw = function () {
         this.x = this.x + this.velocity
