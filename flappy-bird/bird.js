@@ -7,6 +7,7 @@ function Bird() {
     this.w = BIRD_WIDTH;
     this.velocity = 0.2;
     this.isGameOver = false;
+    this.imageCounter = 0;
 
     this.gameOver = function () {
         textAlign(CENTER);
@@ -22,9 +23,9 @@ function Bird() {
         const gap = 2;
         return {
             x: this.x - gap,
-            y: this.y - gap,
+            y: this.y - gap - 1,
             w: this.w - 2 * gap,
-            h: this.h - 2 * gap
+            h: this.h - 2 * gap - 1
         }
     }
 
@@ -37,12 +38,19 @@ function Bird() {
             this.y = H - this.h;
             this.gameOver();
         } else {
-            this.velocity = this.velocity + 0.1;
+            this.velocity = this.velocity + 0.175;
         }
 
         //bounding box debugging
         // rect(this.x, this.y, this.w, this.h);
-        image(imgBird, this.x, this.y, this.w, this.h);
+        if (this.imageCounter < 3) {
+            image(imgBird_0, this.x, this.y, this.w, this.h);
+        } else if (this.imageCounter < 6) {
+            image(imgBird_1, this.x, this.y, this.w, this.h);
+        } else {
+            image(imgBird_2, this.x, this.y, this.w, this.h);
+        }
+        this.imageCounter = (this.imageCounter + 1) % 9;
     }
 
     this.fly = function () {
@@ -50,7 +58,7 @@ function Bird() {
         if (this.y < this.h) {
             this.gameOver();
         }
-        this.velocity = -1;
+        this.velocity = -2;
     }
 
 

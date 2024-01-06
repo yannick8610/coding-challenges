@@ -19,7 +19,9 @@ let scoreboard;
 
 function preload() {
   imgBackground = loadImage('images/flappy_bird_backdrop.jpg');
-  imgBird = loadImage('images/bird.png');
+  imgBird_0 = loadImage('images/bird_0.png');
+  imgBird_1 = loadImage('images/bird_1.png');
+  imgBird_2 = loadImage('images/bird_2.png');
   imgPipeUp = loadImage('images/pipe-up.png');
   imgPipeDown = loadImage('images/pipe-down.png');
   imgVoegeli = loadImage('images/voegeli.png')
@@ -56,6 +58,7 @@ function reset() {
   bird = new Bird();
   pipes = new Pipes();
   voegeli = new Voegeli();
+  scoreboard = new Scoreboard();
   loop();
 }
 
@@ -67,6 +70,7 @@ function keyPressed() {
   }
   if (key?.toLowerCase() === "s") {
     reset();
+
   }
 
 }

@@ -56,7 +56,7 @@ function Pipes() {
 }
 
 function Pipe(xpos) {
-    this.x = xpos;
+    this.x = xpos + map(random(), 0, 1, 10, 50);
     this.y = 0;
     this.w = PIPE_WIDTH;
     this.h = H
