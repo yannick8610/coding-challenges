@@ -1,11 +1,11 @@
 function Bird() {
-    const FLY = 40;
+    const FLY = 20;
 
     this.x = W * 0.15;
     this.y = H / 2;
     this.h = BIRD_HEIGHT;
     this.w = BIRD_WIDTH;
-    this.velocity = 0.2;
+    this.velocity = 0.1;
     this.isGameOver = false;
     this.imageCounter = 0;
 
@@ -38,7 +38,7 @@ function Bird() {
             this.y = H - this.h;
             this.gameOver();
         } else {
-            this.velocity = this.velocity + 0.9;
+            this.velocity = this.velocity + 0.125;
         }
 
         //bounding box debugging
@@ -58,7 +58,7 @@ function Bird() {
         if (this.y < this.h) {
             this.gameOver();
         }
-        this.velocity = -2;
+        this.velocity = -1;
     }
 
 
