@@ -5,16 +5,16 @@ function Voegeli() {
     this.y = H / 5;
     this.h = BIRD_HEIGHT * 3 / 4;
     this.w = BIRD_WIDTH * 3 / 4;
-    this.velocity = 1.8;
+    this.velocity = 3.5;
 
 
 
     this.draw = function () {
         this.x = this.x + this.velocity;
         if (random() < 0.5) {
-            this.y = this.y - 1
+            this.y = this.y - 2
         } else {
-            this.y = this.y + 1
+            this.y = this.y + 2
         }
         if (this.x > W) {
             voegeli = new Voegeli()

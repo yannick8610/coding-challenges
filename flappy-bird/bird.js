@@ -1,5 +1,5 @@
 function Bird() {
-    const FLY = 20;
+    const FLY = 40;
 
     this.x = W * 0.15;
     this.y = H / 2;
@@ -38,7 +38,7 @@ function Bird() {
             this.y = H - this.h;
             this.gameOver();
         } else {
-            this.velocity = this.velocity + 0.175;
+            this.velocity = this.velocity + 0.9;
         }
 
         //bounding box debugging
