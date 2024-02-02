@@ -3,92 +3,54 @@ const h = 400;
 const d = 20;
 const playerDistance = w / 2 / 6;
 
-let playerLeft;
-let playerRight;
-let plan;
-let ball;
+let rocket;
 let gameOver = false;
 
 function setup() {
     createCanvas(w, h);
 
-    plan = new GamePlan(d, d, w - 2 * d, h - 2 * d);
-    playerLeft = new Player(plan, playerDistance, h / 2, true);
-    playerRight = new Player(plan, w - playerDistance, h / 2, false);
-    ball = new Ball(plan, w / 2, h / 2, 8)
-    if (random() > 0.5) { // left
-        playerLeft.nextBall = true
-        playerRight.nextBall = false
-    } else { // right
-        playerLeft.nextBall = false
-        playerRight.nextBall = true
-    }
+
 }
 
 let r = 0.0;
 function draw() {
     background(0, 0, 0);
 
-    plan.show();
-    ball.show();
-    playerLeft.show();
-    playerRight.show();
-
-    if (playerLeft.score >= 10 || playerRight.score >= 10) {
-        textAlign(CENTER);
-        fill(200)
-        text("GAME OVER !!!", w / 2, h / 2);
-        gameOver = true;
-        noLoop()
-    }
-
-    if (playerLeft.nextBall) {
-        playerLeft.nextBall = false;
-        ball.reset()
-        ball.go(-1, random(PI / 4, 3 * PI / 4))
-    } else if (playerRight.nextBall) {
-        playerRight.nextBall = false;
-        ball.reset()
-        ball.go(1, random(PI / 4, 3 * PI / 4))
-    }
-
-    if (playerLeft.touched(ball)) {
-        console.log("playerLeft touched");
-    } else if (playerRight.touched(ball)) {
-        console.log("playerRight touched");
-    } else if (plan.touched(ball, playerLeft, playerRight)) {
-        console.log("plan touched");
-    }
-
-    playerLeft.move();
-    playerRight.move();
-    ball.move();
-
-
-}
-
-
-function keyPressed() {
-    if (key === " " && gameOver) {
-        setup();
-        loop();
-    }
-    if (key === "a") {
-        rocket.goRight();
-    }
-    if (key === "d") {
-        rocket.goLeft();
-    }
+    space.show();
+    bullets.show();
+    rocket.show();
+    ufo.show();
 
 
 
 
-    function keyReleased() {
+
+
+
+    function keyPressed() {
+        if (key === " " && gameOver) {
+            setup();
+            loop();
+        }
         if (key === "a") {
-            rocket.stay();
+            rocket.goRight();
         }
         if (key === "d") {
-            rocket.stay();
+            rocket.goLeft();
+        }
+
+
+
+
+        function keyReleased() {
+            if (key === "a") {
+                rocket.stay();
+            }
+            if (key === "d") {
+                rocket.stay();
+            }
+
         }
 
     }
+}

@@ -1,4 +1,4 @@
-function GamePlan(x, y, w, h) {
+function ufo(x, y, w, h) {
     const playerGap = 3;
 
     this.x = x;
@@ -18,47 +18,8 @@ function GamePlan(x, y, w, h) {
     }
 
 
-    this.touched = function (ball, playerLeft, playerRight) {
-        if (playerLeft.nextBall || playerRight.nextBall) {
-            return false;
-        }
-        if (ball.x - this.x < ball.r) {
-            ball.velocityX = ball.velocityY = 0;
-            playerRight.goal();
-            playerLeft.nextBall = true;
-            playerRight.nextBall = false;
-            return true;
-        }
-        if (this.x + this.w - ball.x < ball.r) {
-            ball.velocityX = ball.velocityY = 0;
-            playerLeft.goal();
-            playerRight.nextBall = false;
-            playerLeft.nextBall = true;
-            return true;
-        }
-        if (ball.y - this.y < ball.r) {
-            ball.velocityY *= -1;
-        }
-        if (this.y + this.h - ball.y < ball.r) {
-            ball.velocityY *= -1;
-        }
-        return false;
-    }
-}
 
 
-function Player(plan, x, y, isLeft) {
-    const speed = 8;
-
-    this.plan = plan;
-    this.x = x;
-    this.y = y;
-    this.w = 10;
-    this.h = 60;
-    this.isLeft = isLeft;
-    this.velocity = 0;
-    this.score = 0;
-    this.nextBall = false;
 
 
     this.show = function () {
