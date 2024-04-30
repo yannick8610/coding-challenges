@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"path": "addons"
+		},
+		{
+			"path": "empty-example"
+		},
+		{
+			"path": "flappy-bird"
+		},
+		{
+			"path": "my-coding-train"
+		},
+		{
+			"path": "Pong"
+		},
+		{
+			"path": "Snake.game"
+		},
+		{
+			"path": "Space-invaders"
+		}
+	]
+}
