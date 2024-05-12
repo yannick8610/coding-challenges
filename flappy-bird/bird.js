@@ -66,7 +66,7 @@ function Bird() {
 }
 
 function Scoreboard() {
-    this.score = 0;
+    this.score = 340;
     this.x = W / 2;
     this.y = 50;
 
