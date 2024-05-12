@@ -30,8 +30,7 @@
 
     </div>
     <div class="flex flex-row gap-5 font-serif pb-8 ">
-        <div class="basis-1/4"></div>
-        <div class="basis-1/4 pr-3 bg-yellow-100  to-transparent rounded-md">
+        <div class="basis-1/2 pr-3 bg-yellow-100  to-transparent rounded-md">
 
 
             <h2 class="pr-2 pl-2 grid-cols-4 gap-3  text-sky-400  text-xl pb-8 pl-5 rounded-md">
@@ -41,6 +40,30 @@
                     <p><a href="/pong/index.html">PONG</a></p>
                 </h2>
 
+
+                <div class="max-w-lg mx-auto p-4">
+                    <div class="slider">
+                        <div class="slides">
+                            <div class="slide">
+                                <a target=_blank" href="images/Pong/1.png"><img src="images/Pong/1.png"
+                                        alt="Slide 1"></a>
+                            </div>
+                            <div class="slide">
+                                <a target=_blank" href="images/Pong/2.png"><img src="images/Pong/2.png"
+                                        alt="Slide 2"></a>
+                            </div>
+                            <div class="slide">
+                                <a target=_blank" href="images/Pong/3.png"><img src="images/Pong/3.png"
+                                        alt="Slide 31"></a>
+                            </div>
+                            <div class="slide">
+                                <a target=_blank" href="images/Pong/4.png"><img src="images/Pong/4.png"
+                                        alt="Slide 4"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <p class="pl-3 pr-3">The game is a two playergame, if you play left you you use the keys " W" and "s" .
                     For
                     player right use
@@ -48,7 +71,7 @@
 
 
         </div>
-        <div class="basis-1/4  bg-yellow-100  to-transparent rounded-md ">
+        <div class="basis-1/2  bg-yellow-100  to-transparent rounded-md ">
 
 
 
@@ -90,7 +113,6 @@
                     To reload the game press the key "S".
                 </p>
         </div>
-        <div class="basis-1/"></div>
     </div>
 
     <div class="grid grid-cols-3 gap-5 pb-8 ">
@@ -188,17 +210,21 @@
 
 
     <script>
-        const slides = document.querySelector('.slides');
-        const slideWidth = slides.firstElementChild.clientWidth;
+        const slidesArray = document.getElementsByClassName('slides');
+        const slideWidth = slidesArray[0].firstElementChild.clientWidth;
+        const slideLength = slidesArray[0].children.length
         let currentIndex = 0;
 
         function goToSlide(index) {
             currentIndex = index;
-            slides.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+            for (let i = 0; i < slidesArray.length; i++) {
+                const slides = slidesArray[i];
+                slides.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+            }
         }
 
         function nextSlide() {
-            currentIndex = (currentIndex + 1) % slides.children.length;
+            currentIndex = (currentIndex + 1) % slideLength;
             goToSlide(currentIndex);
         }
 
