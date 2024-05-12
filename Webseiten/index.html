@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="9qLFz6_IWXD_e1wALvJ3TYG1hsA_v3JJYPt-KrPh5mQ" />
+    <link href="styles.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Coding with Yannick</title>
     <!-- Google tag (gtag.js) -->
@@ -40,9 +41,6 @@
                     <p><a href="/pong/index.html">PONG</a></p>
                 </h2>
 
-                <img src="Ohne Titel 13.png" class="transition-opacity duration-500 hover:opacity-50" alt="Bild">
-                <img src="Ohne Titel 14.png" class="transition-opacity duration-500 hover:opacity-50" alt="Bild">
-                <img src="Ohne Titel 15.png" class="transition-opacity duration-500 hover:opacity-50" alt="Bild">
                 <p class="pl-3 pr-3">The game is a two playergame, if you play left you you use the keys " W" and "s" .
                     For
                     player right use
@@ -60,7 +58,31 @@
 
                     <p><a href="/flappy-bird/index.html">FLAPPY BIRD</a></p>
                 </h2>
-                </p>
+
+                <div class="max-w-lg mx-auto p-4">
+                    <div class="slider">
+                        <div class="slides">
+                            <div class="slide">
+                                <a target=_blank" href="images/FlappyBird/1.png"><img src="images/FlappyBird/1.png"
+                                        alt="Slide 1"></a>
+                            </div>
+                            <div class="slide">
+                                <a target=_blank" href="images/FlappyBird/2.png"><img src="images/FlappyBird/2.png"
+                                        alt="Slide 2"></a>
+                            </div>
+                            <div class="slide">
+                                <a target=_blank" href="images/FlappyBird/3.png"><img src="images/FlappyBird/3.png"
+                                        alt="Slide 31"></a>
+                            </div>
+                            <div class="slide">
+                                <a target=_blank" href="images/FlappyBird/4.png"><img src="images/FlappyBird/4.png"
+                                        alt="Slide 4"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
 
 
 
@@ -162,6 +184,26 @@
                     </p>
                 </div>
         </div>
+    </div>
+
+
+    <script>
+        const slides = document.querySelector('.slides');
+        const slideWidth = slides.firstElementChild.clientWidth;
+        let currentIndex = 0;
+
+        function goToSlide(index) {
+            currentIndex = index;
+            slides.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.children.length;
+            goToSlide(currentIndex);
+        }
+
+        setInterval(nextSlide, 3000);
+    </script>
 </body>
 
 </html>
